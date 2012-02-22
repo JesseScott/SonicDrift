@@ -1,0 +1,24 @@
+/* 
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-Repurcusssions 3.0 Unported License. 
+To view a copy of this license, visit http://www.graffitiresearchlab.fr/?portfolio=attribution-noncommercial-repercussions-3-0-unported-cc-by-nc-3-0
+
+-- SonicDrift --
+A Locative Audio Framework for Android OS
+
+A project by the memelab
+www.memelab.ca/sonic-drift
+
+Developed as part of the MARIN 2011 Residency "Cartography and the Everyday at Sea"
+www.marin.cc
+With the assistance of
+io/lab (Stavanger, Norway)
+www.iolab.no
+Kultivator (Oland, Sweden)
+www.kultivator.org
+Nida Art Colony (Nida, Lithuania)
+www.colony.lt
+ 
+Requires Sketch Permissions : ACCESS_COURSE_LOCATION, ACCESS_FINE_LOCATION, VIBRATE, WRITE_EXTERNAL_STORAGE, RECORD_AUDIO, WAKE_LOCK
+
+*/
