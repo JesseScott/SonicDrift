@@ -1,9 +1,9 @@
 //-----------------------------------------------------------------------------------------
 
+@Override
 void onResume() {
-  println("Entering Sketch...");  
   super.onResume();
-
+    
   //GPS Sensor
   locationListener = new MyLocationListener();
   locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
@@ -41,16 +41,16 @@ public class screenLock {
 
   public void Stop() {
     wl.release();
+    wl = null;
   }
 }
 
 //---
 
-void onPause() {
-  println("Exiting Sketch...");
+@Override
+protected void onPause() {
   super.onPause();
-  super.onStop();
-  
+
   // Release the Recorder
   if (mRecorder != null) {
     mRecorder.release();
@@ -65,18 +65,19 @@ void onPause() {
   
   // Release Power Manager
   wake.Stop();
-
-  //Release the Players
-  /*
-  if(far != null) { 
-    far.release();     
-  }
-  if(near != null) {
-    near.release(); 
-  }
-  */
+  wake = null;
+  
+  // Release Location Listener
+  locationManager.removeUpdates(locationListener); 
+  locationManager = null;
 
 }
+
+//@Override
+//protected void onStop() {
+//        super.onStop();
+//}
+
 
 //---
 

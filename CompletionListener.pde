@@ -3,16 +3,8 @@
 import android.media.MediaPlayer.OnCompletionListener;
 
 public class MyCompletionListener implements MediaPlayer.OnCompletionListener {
-
-// protected MediaPlayer player;
-//
-// public void setPlayer(MediaPlayer player){
-//       this.player = player;
-// }
-
+ // Resets MediaPlayer So It Doesn't Play Over + Over
  public void onCompletion(MediaPlayer mPlayer) {
-    println("CALLING...");
-    foo = "completing";
     mPlayer.reset();
     //mPlayer = null; 
   }

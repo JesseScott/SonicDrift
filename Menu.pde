@@ -1,16 +1,41 @@
 //-----------------------------------------------------------------------------------------
-// State 1 : UI
+// State 1 : ABOUT
 
 void State1() {
-  if(displayState == 1) {
-    background(10);
+  if(displayState == 1) {   
+    background(bg);
+    texfieldContainer.hide();
+    radioContainer.hide();
+    image(about, 0, 0, width, height);
+    if(mousePressed) displayState = 2;
+  }
+}
+
+//-----------------------------------------------------------------------------------------
+// State 2 : INSTRUCTIONS
+
+void State2() {
+  if(displayState == 2) {
+    background(bg);
+    texfieldContainer.hide();
+    radioContainer.hide();
+    image(instructions, 0, 0, width, height);   
+    if(mousePressed) displayState = 3;
+  }
+}
+
+
+//-----------------------------------------------------------------------------------------
+// State 3 : MAIN
+
+void State3() {
+  if(displayState == 3) {
+    background(bg);
     strokeWeight(3);
     strokeJoin(ROUND);
-    stroke(200);
-    fill(200);
     textAlign(LEFT); 
     
-    // Pulse for Text
+    // Pulse For Text
     pulse++;
     if(pulse >= 100) {
       pulse = 0;
@@ -36,140 +61,29 @@ void State1() {
     fill(lonColor);
     text("LON ", sw/10, sh/10+((sh/16)*2));
     
-    //text(foo, width/2, height/2+50);
+    stroke(200);
+    fill(200);
     
+    //Resolution Buttons
+    text("SET GPS RESOLUTION ", sw/8, sh/2 -10);
+    radioContainer.show();
+    if(res3.isChecked()){
+      GPSres = 3;
+    }else if(res4.isChecked()){
+      GPSres = 4;
+    }else if(res5.isChecked()){
+      GPSres = 5;
+    }
+    
+    // Call GPS Function
     GPS();
     
     // Text Field
-    stroke(200);
-    fill(200);
-    text("TAG", sw/2-(sw/12), sh/2+sh/16);
-    container.show();
+    text("NAME FILE ", sw/8, 3*(sh/4) -10);
+    texfieldContainer.show();
    
-    // Buttons
-    mRecordButton.recOn();
-    mPlayButton.playOn();
-    mStopButton.stopOn();
-    mRecordButton.display();
-    mPlayButton.display();
-    mStopButton.display();
-    
-    // Menu Ellipses
-    color S1Color = color(200);
-    color S2Color = color(100);
-    color S3Color = color(100);
-    fill(S1Color);
-    ellipse(sw/4, 9*(sh/10), sh/20, sh/20);
-    fill(S2Color);
-    ellipse(sw/2, 9*(sh/10), sh/20, sh/20);
-    fill(S3Color);
-    ellipse(3*(sw/4), 9*(sh/10), sh/20, sh/20);
-    
-    if(mousePressed) {
-      
-      if(mouseY > 8*(sh/10)) {
-        if(mouseX > ((sw/2)-sh/10) && mouseX < ((sw/2)+sh/10) ) {
-          gNotificationManager.notify(1, gNotification);
-          displayState = 2;  
-        }
-        else if(mouseX > (3*(sw/4)-sh/10) && mouseX < (3*(sw/4)+sh/10) ) {
-          gNotificationManager.notify(1, gNotification);
-          displayState = 3;           
-        }
-      }    
-      
-    }
-    
-  }
-}
-
-//-----------------------------------------------------------------------------------------
-// State 2 : Map
-
-void State2() {
-  if(displayState == 2) {
-    background(10);
-    container.hide();
-    image(mapImage, 0, 0, width, height);
-    
-    // Menu Ellipses
-    color S1Color = color(100);
-    color S2Color = color(200);
-    color S3Color = color(100);
-    fill(S1Color);
-    ellipse(sw/4, 9*(sh/10), sh/20, sh/20);
-    fill(S2Color);
-    ellipse(sw/2, 9*(sh/10), sh/20, sh/20);
-    fill(S3Color);
-    ellipse(3*(sw/4), 9*(sh/10), sh/20, sh/20);
-    
-    if(mousePressed) {
-      if(mouseY > 8*(sh/10)) {
-        if(mouseX > ((sw/4)-sh/10) && mouseX < ((sw/4)+sh/10) ) {
-          gNotificationManager.notify(1, gNotification);
-          displayState = 1;  
-        }
-        else if(mouseX > (3*(sw/4)-sh/10) && mouseX < (3*(sw/4)+sh/10) ) {
-          gNotificationManager.notify(1, gNotification);
-          displayState = 3;           
-        }
-      }
-    }
-    
-  }
-  
-}
-
-
-//-----------------------------------------------------------------------------------------
-// State 3 : ReadMe
-
-void State3() {
-  if(displayState == 3) {
-    background(10);
-    container.hide();
-
-    try{
-      String readme[] = loadStrings("//sdcard//SonicDrift//README.txt");
-      fill(255);
-      textFont(smallFont); 
-      textAlign(CENTER);
-      rectMode(CORNER);     
-      for(int i = 0; i < readme.length; i++) {
-        String[] foo = splitTokens(readme[i],"\r");
-        for(int j = 0; j < foo.length; j++) {
-          text(readme[i], 20, 5+i*30, sw-40, 7*(sh/10));
-        }
-      }
-    }
-    catch(Exception noFile) {
-      println("Exception Reading File... " + noFile); 
-      //noFile.printStackTrace(); 
-    }
-    
-    // Menu Ellipses
-    color S1Color = color(100);
-    color S2Color = color(100);
-    color S3Color = color(200);
-    fill(S1Color);
-    ellipse(sw/4, 9*(sh/10), sh/20, sh/20);
-    fill(S2Color);
-    ellipse(sw/2, 9*(sh/10), sh/20, sh/20);
-    fill(S3Color);
-    ellipse(3*(sw/4), 9*(sh/10), sh/20, sh/20);
-    
-    if(mousePressed) {
-      if(mouseY > 9*(sh/10)) {
-        if(mouseX > ((sw/4)-sh/10) && mouseX < ((sw/4)+sh/10) ) {
-          gNotificationManager.notify(1, gNotification);
-          displayState = 1;  
-        }
-        else if(mouseX > ((sw/2)-sh/10) && mouseX < ((sw/2)+sh/10) ) {
-          gNotificationManager.notify(1, gNotification);
-          displayState = 2;           
-        }
-      }
-    }
-    
+    // Record Button
+    //mRecordButton.recOn();
+    //mRecordButton.display();
   }
 }

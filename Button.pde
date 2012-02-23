@@ -101,123 +101,17 @@ class RecordButton extends CircleButton {
 
   void display() {
     super.display();
-    fill(255,0,0);
+    stroke(200);
+    fill(200);
     textFont(androidFont);
-    textSize(sw/10);
-    //text("RECORD", sw/2-(sw/10), 3*(sh/4)+sh/6);
-    String s = "R";
+    String s = "REC FILE ";
     float textW = textWidth(s);
     float textH = textAscent() + textDescent();
-    text(s, x-textW/2, y+textH/3);
+    text(s, x-textW/2, 3*(sh/4) -10);
+    noFill();
+    rect(x, y, sh/8, sh/8);
   }
 }
 
 //-----------------------------------------------------------------------------------------
-// PLAY BUTTON
-
-class PlayButton extends CircleButton {
-  boolean mStartPlaying = true;
-
-  PlayButton(int ix, int iy, int isize, color icolor, color ihighlight) {
-    super(ix, iy, isize, icolor, ihighlight);
-  }
-
-  boolean over() 
-  {
-    if ( overCircle(x, y, size) ) {
-      over = true;
-      return true;
-    } 
-    else {
-      over = false;
-      return false;
-    }
-  }
-
-  void playOn() {
-    if (over() && mousePressed) {
-
-       
-       //onPlay(mStartPlaying);
-       if(playable) {
-         fill(255);
-         startPlaying();
-         gNotificationManager.notify(1, gNotification);
-       }
-       //mStartPlaying = !mStartPlaying;
-
-    }
-    if (mStartPlaying) {
-      currentcolor = basecolor;
-       } 
-    else {
-      currentcolor = highlightcolor;
-       }
-  }
-
-
-  void display() {
-    super.display();
-    fill(0);
-    textFont(androidFont);
-    textSize(sw/10);
-    String s = "P";
-    float textW = textWidth(s);
-    float textH = textAscent() + textDescent();
-    text(s, x-textW/2, y+textH/3);
-  }
-}
-
-//-----------------------------------------------------------------------------------------
-// STOP BUTTON
-
-class StopButton extends CircleButton {
-  boolean mStartPlaying = false;
-
-  StopButton(int ix, int iy, int isize, color icolor, color ihighlight) {
-    super(ix, iy, isize, icolor, ihighlight);
-  }
-
-  boolean over() 
-  {
-    if ( overCircle(x, y, size) ) {
-      over = true;
-      return true;
-    } 
-    else {
-      over = false;
-      return false;
-    }
-  }
-
-  void stopOn() {
-    if (over() && mousePressed) {
-
-       fill(255);
-       stopPlaying();
-       gNotificationManager.notify(1, gNotification);
-       //mStartPlaying = !mStartPlaying;
-
-    }
-    if (mStartPlaying) {
-      currentcolor = basecolor;
-       } 
-    else {
-      currentcolor = highlightcolor;
-       }
-  }
-
-
-  void display() {
-    super.display();
-    fill(0);
-    textFont(androidFont);
-    textSize(sw/10);
-    String s = "S";
-    float textW = textWidth(s);
-    float textH = textAscent() + textDescent();
-    text(s, x-textW/2, y+textH/3);
-  }
-}
-
 
