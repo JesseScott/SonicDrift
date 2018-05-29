@@ -1,7 +1,8 @@
-package tt.co.jesses.sonicdrift
+package tt.co.jesses.sonicdrift.View
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import tt.co.jesses.sonicdrift.R
 
 class MainActivity : AppCompatActivity() {
 

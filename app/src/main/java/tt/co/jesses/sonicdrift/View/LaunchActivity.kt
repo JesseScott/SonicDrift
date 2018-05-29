@@ -1,10 +1,11 @@
-package tt.co.jesses.sonicdrift
+package tt.co.jesses.sonicdrift.View
 
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_launch.*
+import tt.co.jesses.sonicdrift.R
 
 
 class LaunchActivity : AppCompatActivity() {
