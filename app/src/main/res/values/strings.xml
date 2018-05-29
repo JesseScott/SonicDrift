@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">SonicDrift</string>
+
+    <string name="title_activity_launch">LaunchActivity</string>
+
 </resources>
