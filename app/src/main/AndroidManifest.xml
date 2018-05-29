@@ -3,6 +3,7 @@
           package="tt.co.jesses.sonicdrift">
 
     <application
+            android:name=".SonicDriftApplication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -10,7 +11,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
 
-        <activity android:name=".View.MainActivity">
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -19,7 +20,7 @@
         </activity>
 
         <activity
-                android:name=".View.LaunchActivity"
+                android:name=".view.LaunchActivity"
                 android:configChanges="orientation|keyboardHidden|screenSize"
                 android:label="@string/title_activity_launch"
                 android:theme="@style/FullscreenTheme">
